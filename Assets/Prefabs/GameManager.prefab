@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8262601944413035664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4664601509305877077}
+  - component: {fileID: 7720678637356108280}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4664601509305877077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262601944413035664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7720678637356108280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8262601944413035664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4dcb3d2a16ce834e8988e50cb9aff20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secretEndUI: {fileID: 0}
+  startUI: {fileID: 0}
+  secretEndDialogs:
+  - characterName: You
+    text: '"Sudah cukup menonton TV nya. Rasanya aku ingin muntah"'
+  - characterName: You
+    text: '"<b>Euphoria</b> punya gejala-gejala tertentu untuk setiap orang yang
+      terinfeksi. Kalau tidak salah, aku sudah menuliskannya di <b>buku tulis</b>
+      diatas <b>kasur</b>"'
+  - characterName: You
+    text: '"Tapi kalau tidak ingin buang-buang waktum lebih baik aku memulai <b>Hack
+      Satelite System</p> sekarang."'
+  - characterName: You
+    text: '"Aku tak peduli jika harus membungihanguskan semuanya daripada wabah ini
+      terus menyebar. Kegilaan ini harus segera diakhiri.""'
+  - characterName: You
+    text: '"Tinggal 24 jam lagi... apa aku bisa melakukannya sebelum saat itu?"'
+  currentChapter: 1
