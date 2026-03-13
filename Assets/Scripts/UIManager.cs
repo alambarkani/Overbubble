@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject mainMenuUI;
     [Header("Dialog Initial")]
-    [SerializeField] Dialog[] initialDialogs;
+    // [SerializeField] Dialog[] initialDialogs;
 
     private bool isFirstTime = true;
 
@@ -50,10 +50,10 @@ public class UIManager : MonoBehaviour
         if (isFirstTime && ui.CompareTag("PlayerUI"))
         {
             isFirstTime = false;
-            DialogManager.Instance.StartDialog(initialDialogs, () =>
-            {
-                CutsceneManager.Instance.StaticTVScene();
-            });
+            // DialogManager.Instance.StartDialog(initialDialogs, () =>
+            // {
+            //     CutsceneManager.Instance.StaticTVScene();
+            // });
         }
     }
 

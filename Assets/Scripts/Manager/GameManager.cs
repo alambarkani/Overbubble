@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject startUI;
     [SerializeField] GameObject playerUI;
 
-    [Header("Dialog Settings")]
-    [SerializeField] Dialog[] secretEndDialogs;
+    // [Header("Dialog Settings")]
+    // [SerializeField] Dialog[] secretEndDialogs;
 
     [SerializeField] AudioSource audioSource;
 
@@ -36,13 +36,13 @@ public class GameManager : MonoBehaviour
         CutsceneManager.Instance.PlayCutscene();
     }
 
-    public void SecretEnd()
-    {
-        DialogManager.Instance.StartDialog(secretEndDialogs, () =>
-        {
-            UIManager.instance.ShowUI(secretEndUI);
-        });
-    }
+    // public void SecretEnd()
+    // {
+    //     DialogManager.Instance.StartDialog(secretEndDialogs, () =>
+    //     {
+    //         UIManager.instance.ShowUI(secretEndUI);
+    //     });
+    // }
 
     public void HideChoice(GameObject choiceContainer)
     {

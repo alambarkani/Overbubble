@@ -6,14 +6,14 @@ public class Smartphone : Interactable
     [SerializeField] GameObject smartphoneUI;
 
 
-    [Header("Dialog Settings")]
-    [SerializeField] Dialog[] smartphoneDialogs;
+    // [Header("Dialog Settings")]
+    // [SerializeField] Dialog[] smartphoneDialogs;
 
     public override void Interact()
     {
         if (GameManager.Instance.currentChapter == 1)
         {
-            DialogManager.Instance.StartDialog(smartphoneDialogs);
+            // DialogManager.Instance.StartDialog(smartphoneDialogs);
             Debug.Log("Interaksi dengan smartphone");
         }
         else

@@ -1,28 +1,30 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraRotation : MonoBehaviour
 {
     public float mouseSensitivity = 100f;
-    public Transform playerBody;
 
-    private float xRotation = 0f;
+    private float rotationX = 0f;
+    private float rotationY = 0f;
+
+    [SerializeField] private InputActionReference lookAction;
 
 
     void Update()
     {
-        // Ambil input mouse
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        var lookInput = lookAction.action.ReadValue<Vector2>();
 
         if (Cursor.lockState == CursorLockMode.Locked && !CutsceneManager.Instance.IsCutscenePlaying)
         {
-            // Rotasi vertikal kamera
-            xRotation -= mouseY;
-            xRotation = Mathf.Clamp(xRotation, -90f, 90f); // Batas rotasi agar tidak 360 derajat
-            transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+            rotationX -= lookInput.y * mouseSensitivity; // Atas-Bawah (Pitch)
+            rotationY += lookInput.x * mouseSensitivity; // Kiri-Kanan (Yaw)
 
-            // Rotasi horizontal karakter
-            playerBody.Rotate(Vector3.up * mouseX);
+            // 4. (Opsional) Batasi rotasi vertikal agar tidak jungkir balik
+            rotationX = Mathf.Clamp(rotationX, -90f, 90f);
+
+            // 5. Terapkan hasil akumulasi
+            transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0);
         }
     }
 }

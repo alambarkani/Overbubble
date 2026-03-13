@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ed9b9ff90bd34dbfd73261247c819, type: 3}
+  m_Name: AfterTVStaticDialog
+  m_EditorClassIdentifier: 
+  DialogEntries:
+  - Talker: {fileID: 11400000, guid: fb086b24fac27e54f8d8b34ee7cbf263, type: 2}
+    Sentence:
+    - '"Sudah cukup menonton TV nya. Rasanya aku ingin muntah"'
+    - '"<b>Euphoria</b> punya gejala-gejala tertentu untuk setiap orang terinfeksi.
+      Kalau tidak salah, aku sudah menuliskannya di <b>buku tulis</b> diatas <b>kasur</b>"'
+    - '"Tapi kalau tidak ingin buang-buang waktu, lebih baik aku memulai <b>Hack
+      Satelite System</b> ku sekarang"'
+    - '"Aku tak peduli jika harus membumihanguskan semuanya daripada wabah ini terus
+      menyebar. Kegilaan ini lebih baik harus segera diakhiri."'
+    - '"Tinggal 24 jam lagi... apa aku bisa melakukannya sebelum saat itu?"'

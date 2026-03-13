@@ -1,13 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Camera Settings")]
-    public Transform cameraTransform;
+    private Camera mainCamera;
 
     [Header("Movement Settings")]
     [SerializeField] private float speed = 12f;
-    Rigidbody rb;
+    private CharacterController characterController;
 
     [Header("Interaction Settings")]
     public float interactionRange = 3f; // Jarak interaksi
@@ -16,28 +16,41 @@ public class PlayerMovement : MonoBehaviour
     public bool isInteracting = false;
     public bool isSitting = false;
 
-    public Transform headTransform;
-    public Transform sitTransform;
-
     [Header("UI Settings")]
     [SerializeField] private GameObject pauseUI;
 
+    [SerializeField]
+    private InputActionReference moveAction;
+
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
+
+    private void OnEnable()
+    {
+        moveAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        moveAction.action.Disable();
+    }
+
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        // Input movement
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
+        var moveInput = moveAction.action.ReadValue<Vector2>();
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
 
         if (!CutsceneManager.Instance.IsCutscenePlaying && !isInteracting && !isSitting)
         {
-            rb.MovePosition(rb.position + speed * Time.deltaTime * move);
+            // rb.MovePosition(rb.position + speed * Time.deltaTime * move);
+            characterController.Move(move * speed * Time.deltaTime);
             // Memanggil fungsi interaksi
             HandleInteraction();
         }
@@ -54,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         // Jika tombol interaksi ditekan (default: "E")
         if (Input.GetMouseButtonDown(0))
         {
-            if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out RaycastHit hit, interactionRange, interactableLayer))
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, interactionRange, interactableLayer))
             {
                 Debug.Log("Interaksi");
                 // Panggil fungsi interaksi pada objek
@@ -65,13 +78,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-    }
-
-    void OnDrawGizmos()
-    {
-
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawRay(cameraTransform.position, cameraTransform.forward * interactionRange);
     }
 
     public void QuitInteraction()
